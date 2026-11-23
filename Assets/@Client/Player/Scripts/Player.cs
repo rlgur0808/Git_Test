@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, IDamageable
     private MeshRenderer meshRenderer = null;
     private Color originalColor = default;
 
-    private Gun gun = null;
+    private Gun[] guns = null;
 
     private Action onPlayerDie = null;
 
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody>();
         mainCamera = GetComponentInChildren<MainCamera>();
-        gun = GetComponentInChildren<Gun>();
+        guns = GetComponentsInChildren<Gun>();
         meshRenderer = GetComponentInChildren<MeshRenderer>();
 
         hp = maxHp;
@@ -54,7 +54,10 @@ public class Player : MonoBehaviour, IDamageable
         if (Input.GetMouseButtonDown(0))
         {
             //ÃÑÀ» ¹ß»ç
-            gun.Attack();
+            foreach (Gun gun in guns)
+            {
+                gun.Attack();
+            }
         }
     }
 
