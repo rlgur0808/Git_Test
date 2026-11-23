@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     private Player player = null;
     private EnemyManager enemyManager = null;
+    private ItemManager itemManager = null;
     private UIManager uiManager = null;
 
     [SerializeField] private int score = 0;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
         enemyManager
             = GetComponentInChildren<EnemyManager>();
         uiManager = GetComponentInChildren<UIManager>();
+        itemManager = GetComponentInChildren<ItemManager>();
     }
 
     private void Start()
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
         player.Init(OnGameOver);
         enemyManager.Init(player, AddScore);
         uiManager.Init();
+        itemManager.Init();
     }
 
     private void ClearGame()

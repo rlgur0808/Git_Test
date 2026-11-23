@@ -143,6 +143,11 @@ public class Player : MonoBehaviour, IDamageable
         meshRenderer.material.color = originalColor;
     }
 
+    public void Heal(float amount)
+    {
+        hp = Mathf.Min(hp + amount, maxHp);
+    }
+
     private void Die()
     {
         onPlayerDie?.Invoke();
